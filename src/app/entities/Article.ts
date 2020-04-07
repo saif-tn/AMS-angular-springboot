@@ -5,4 +5,5 @@ export class Article {
     qty: number;
     picture: string;
     provider_id: number;
+    createdAt: Date;
 }

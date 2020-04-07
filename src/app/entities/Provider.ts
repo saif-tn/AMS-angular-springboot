@@ -3,4 +3,5 @@ export class Provider {
     name: string;
     address: string;
     email: string;
+    createdAt: Date;
 }

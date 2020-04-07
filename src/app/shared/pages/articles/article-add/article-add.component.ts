@@ -1,11 +1,11 @@
-import { Component, OnInit, Provider } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProviderService } from 'src/app/services/provider.service';
-import { PageProvider } from 'src/app/entities/PageProvider';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { ListProviderComponent } from '../../providers/list-provider/list-provider.component';
 import { Article } from 'src/app/entities/Article';
 import { ArticleService } from 'src/app/services/article.service';
+import { Provider } from 'src/app/entities/Provider';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-article-add',
@@ -16,22 +16,45 @@ export class ArticleAddComponent implements OnInit {
 
   article: Article = new Article();
   submitted = false;
-  provider_id: number;
+  providerID: number;
+  providers: Provider[];
+  addArticleForm: NgForm;
 
 
   constructor(private articleService: ArticleService,
+              private providerService: ProviderService,
               private router: Router) { }
 
 
   ngOnInit() {
+    /* this.providerService.getPageProvider(1).subscribe(
+      data => {
+        console.log('getPageProvider', data.content);
+      }
+    ); */
+    this.providerService.getProviders()
+    .pipe(
+        map(result => {
+              //this.providers = result.content;
+              console.log(this.providers);
+            }
+        )
+    )
+    .subscribe(result => {
+      // console.log('getProviders', result.content);
+    },
+    error => {
+      console.log(error);
+    }
+    );
   }
 
+
+
   onSubmitArticleForm(addArticleForm: NgForm) {
-    console.log(addArticleForm.value);
-    console.log(this.provider_id);
-    console.log(addArticleForm.value);
+    console.log('addArticleForm', addArticleForm.value);
     this.submitted = true;
-    // this.saveArticle();
+    this.saveArticle(addArticleForm.value.provider_id);
   }
 
   newArticle(): void {
@@ -39,13 +62,14 @@ export class ArticleAddComponent implements OnInit {
     this.article = new Article();
   }
 
-  saveArticle() {
-    this.articleService.createArticle(this.provider_id, this.article)
+  saveArticle(providerID: number) {
+    providerID = 1;
+    this.articleService.createArticle(1, this.article)
     .subscribe( data => {
       console.log('Article is submitting');
       this.goToList();
     },
-    error => console.log('Error' + error));
+    error => console.log('saveArticle Error', error));
     this.article = new Article();
   }
 
