@@ -23,7 +23,7 @@
                                 required
                                 #provider_id="ngModel"
                                 ngModel
-                                [(ngModel)]="article.provider_id">
+                                >
                             <option value="0" selected="selected">--- Choose provider ---</option>
                             <option *ngFor="let provider of providers; index as i"
                                     value="{{provider.id}}"

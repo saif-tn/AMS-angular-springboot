@@ -4,6 +4,6 @@ export class Article {
     price: string;
     qty: number;
     picture: string;
-    provider_id: number;
+    /* provider_id: number; */
     createdAt: Date;
 }

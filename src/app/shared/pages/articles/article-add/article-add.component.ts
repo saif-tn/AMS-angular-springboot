@@ -35,7 +35,7 @@ export class ArticleAddComponent implements OnInit {
     this.providerService.getProviders()
     .pipe(
         map(result => {
-              //this.providers = result.content;
+              this.providers = result.content;
               console.log(this.providers);
             }
         )
@@ -63,8 +63,7 @@ export class ArticleAddComponent implements OnInit {
   }
 
   saveArticle(providerID: number) {
-    providerID = 1;
-    this.articleService.createArticle(1, this.article)
+    this.articleService.createArticle(providerID, this.article)
     .subscribe( data => {
       console.log('Article is submitting');
       this.goToList();
