@@ -1,0 +1,42 @@
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Provider</h1>
+</div>
+    
+<div *ngIf="provider" class="row">
+    
+    <div class="col-lg-12">
+            <!-- Default Card Example -->
+            <!-- Basic Card Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Provider details</h6>
+            </div>
+            <div class="card-body">
+                    <div class="container">
+                        
+                        <div class="row">
+                            <table class="table">
+                                <tr>
+                                    <td style=" width: 10%; "><strong>Provider:</strong></td>
+                                    <td>{{provider.name}}</td>
+                                </tr>
+                                <tr>
+                                    <td style=" width: 10%; "><strong>Adress:</strong></td>
+                                    <td>{{provider.address}}</td>
+                                </tr>
+                                <tr>
+                                    <td style=" width: 10%; "><strong>Email:</strong></td>
+                                    <td>{{provider.email}}</td>
+                                </tr>
+                            </table>
+
+                    </div>
+                </div>
+                <button (click)="backToList()" class="btn btn-primary btn-sm">Back to list</button>
+        </div>
+        
+        </div>
+        
+    </div>
+</div>
