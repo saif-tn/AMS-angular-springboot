@@ -32,7 +32,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Demo 
 
-Link : https://angular-project-1-649fa.firebaseapp.com/
+In progress
 
 ## Further help
 
